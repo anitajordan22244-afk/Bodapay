@@ -130,6 +130,12 @@ See [infra/k8s](infra/k8s/) for Kubernetes deployment manifests and [infra/docke
 - Use multi-signature for high-value escrows
 - Regular security audits recommended
 
+Found a vulnerability? See [SECURITY.md](SECURITY.md) for how to report it privately.
+
+## Contributing
+
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for project layout, setup, testing, and PR guidelines.
+
 ## License
 
 MIT License - see [LICENSE](LICENSE) file for details.
