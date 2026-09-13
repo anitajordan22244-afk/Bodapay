@@ -306,12 +306,14 @@ fn test_fee_exceeds_amount() {
 
     let amount = 100;
 
-    // Set fees that would exceed the amount
+    // Set fees that sum to over 100% of the amount. `set_compliance_fee`
+    // takes a percentage (basis points) like the others, not a flat amount —
+    // 50 here is 0.5%, not a flat 50.
     client.set_platform_fee(&admin, &5000); // 50%
     client.set_forex_fee(&admin, &5000); // 50%
-    client.set_compliance_fee(&admin, &50); // Flat 50
+    client.set_compliance_fee(&admin, &500); // 5%
 
-    // This should fail because total fee >= amount
+    // This should fail because total fee > amount
     let result = client.try_get_fee_breakdown(&amount);
     assert_eq!(result, Err(Ok(Error::FeeExceedsAmount)));
 }

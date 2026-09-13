@@ -143,11 +143,14 @@ fn test_fee_calculation_multiple_fees_overflow() {
     let env = Env::default();
     let (client, admin, sender, recipient, (token, token_admin), asset) = setup_test(&env);
 
-    // Set all fee types to maximum
+    // Set all fee types to maximum. `set_compliance_fee` takes a percentage
+    // capped at 10000 (100%, in basis points) like the others — it rejects
+    // (and the non-`try_` client panics on) anything above that, so
+    // `i128::MAX` isn't a valid "maximum" here.
     client.set_platform_fee(&admin, &10000);
     client.set_processing_fee(&admin, &10000);
     client.set_forex_fee(&admin, &10000);
-    client.set_compliance_fee(&admin, &i128::MAX);
+    client.set_compliance_fee(&admin, &10000);
 
     let amount = i128::MAX / 10000;
     token_admin.mint(&sender, &(amount * 2));

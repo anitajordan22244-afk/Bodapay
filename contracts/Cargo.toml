@@ -9,6 +9,17 @@ crate-type = ["cdylib", "rlib"]
 [dependencies]
 soroban-sdk = "21.0.0"
 
+# soroban-env-host 21.x (pulled in only by soroban-sdk's `testutils` feature,
+# i.e. dev/test builds) declares `ed25519-dalek = ">=2.0.0"` with no upper
+# bound, so cargo can independently resolve that edge to the newest 3.x
+# release — whose `CryptoRng` trait `ChaCha20Rng` no longer satisfies,
+# breaking the build. Pinning our own edge to 2.x isn't sufficient on its
+# own since cargo doesn't collapse it with soroban-env-host's separate,
+# unbounded edge; see Cargo.lock, which is committed specifically to pin
+# ed25519-dalek to a single 2.x resolution across the whole graph (restored
+# with `cargo update -p ed25519-dalek --precise 2.2.0` if it ever drifts).
+ed25519-dalek = "=2.2.0"
+
 [dev-dependencies]
 soroban-sdk = { version = "21.0.0", features = ["testutils"] }
 proptest = "1.4.0"

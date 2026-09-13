@@ -818,11 +818,14 @@ fn test_multiplication_overflow_in_conversions() {
     let env = Env::default();
     let (client, admin, _sender, _recipient, _token, asset) = setup_test(&env);
 
-    // Set high fee percentages
+    // Set high fee percentages. `set_compliance_fee` takes a percentage
+    // capped at 10000 (100%, in basis points) like the others, so
+    // `i128::MAX` is rejected (and the non-`try_` client panics on it)
+    // rather than acting as a "maximum flat fee".
     client.set_platform_fee(&admin, &10000); // 100%
     client.set_processing_fee(&admin, &10000); // 100%
     client.set_forex_fee(&admin, &10000); // 100%
-    client.set_compliance_fee(&admin, &i128::MAX); // Maximum flat fee
+    client.set_compliance_fee(&admin, &10000); // 100%
 
     // Try to get fee breakdown with maximum amount
     let result = client.try_get_fee_breakdown(&i128::MAX);
