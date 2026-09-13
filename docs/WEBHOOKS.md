@@ -1,6 +1,6 @@
 # Webhook Event Types
 
-This document describes the webhook events emitted by the Gpay-Remit backend and on-chain Soroban contracts.
+This document describes the webhook events emitted by the Bodapay backend and on-chain Soroban contracts.
 
 ## Payload Format
 
@@ -21,7 +21,7 @@ Each request includes these headers:
 | `X-Webhook-Signature` | HMAC-SHA256 hex digest of the payload body |
 | `X-Webhook-ID` | Numeric webhook ID |
 | `Content-Type` | `application/json` |
-| `User-Agent` | `GPay-Remit-Webhook/1.0` |
+| `User-Agent` | `Bodapay-Webhook/1.0` |
 
 ## Event Types
 

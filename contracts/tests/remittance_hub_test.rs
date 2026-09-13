@@ -1,4 +1,4 @@
-use gpay_remit_contracts::remittance_hub::{
+use bodapay_contracts::remittance_hub::{
     InvoiceStatus, RemittanceError, RemittanceHubContract, RemittanceHubContractClient,
 };
 use soroban_sdk::{
@@ -209,7 +209,7 @@ fn test_cancel_invoice_unauthorized() {
         &user1,
         &user2,
         &1000,
-        &gpay_remit_contracts::remittance_hub::Asset {
+        &bodapay_contracts::remittance_hub::Asset {
             code: String::from_str(&env, "USDC"),
             issuer: admin.clone(),
         },
@@ -244,7 +244,7 @@ fn test_mark_invoice_paid_unauthorized() {
         &user1,
         &user2,
         &1000,
-        &gpay_remit_contracts::remittance_hub::Asset {
+        &bodapay_contracts::remittance_hub::Asset {
             code: String::from_str(&env, "USDC"),
             issuer: admin.clone(),
         },
@@ -378,7 +378,7 @@ fn test_generate_invoice_success() {
         &user1,
         &user2,
         &1000,
-        &gpay_remit_contracts::remittance_hub::Asset {
+        &bodapay_contracts::remittance_hub::Asset {
             code: String::from_str(&env, "USDC"),
             issuer: admin.clone(),
         },
@@ -435,7 +435,7 @@ fn test_aml_screening() {
 // TIMEZONE AND UTC CONSISTENCY TESTS (#201)
 // ============================================================================
 
-use gpay_remit_contracts::remittance_hub::Asset;
+use bodapay_contracts::remittance_hub::Asset;
 
 // Test that invoice due dates are stored as UTC Unix seconds
 #[test]
@@ -609,7 +609,7 @@ fn test_invoice_paid_at_utc_timestamp() {
 // Test escrow expiration timestamp UTC comparison
 #[test]
 fn test_escrow_expiration_utc_comparison() {
-    use gpay_remit_contracts::remittance_hub::EscrowRequest;
+    use bodapay_contracts::remittance_hub::EscrowRequest;
 
     let env = Env::default();
     env.mock_all_auths();
@@ -679,7 +679,7 @@ fn test_aml_timestamp_utc_consistency() {
 // Test metric tracking uses UTC timestamps
 #[test]
 fn test_metric_tracking_utc_timestamps() {
-    use gpay_remit_contracts::remittance_hub::MetricType;
+    use bodapay_contracts::remittance_hub::MetricType;
 
     let env = Env::default();
     env.mock_all_auths();

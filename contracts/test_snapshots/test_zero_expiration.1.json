@@ -1792,7 +1792,7 @@
           "v0": {
             "topics": [
               {
-                "symbol": "gpayremit"
+                "symbol": "bodapay"
               },
               {
                 "symbol": "escrow"
@@ -1904,7 +1904,7 @@
           "v0": {
             "topics": [
               {
-                "symbol": "gpayremit"
+                "symbol": "bodapay"
               },
               {
                 "symbol": "escrow"
@@ -2141,7 +2141,7 @@
           "v0": {
             "topics": [
               {
-                "symbol": "gpayremit"
+                "symbol": "bodapay"
               },
               {
                 "symbol": "escrow"
@@ -2233,7 +2233,7 @@
           "v0": {
             "topics": [
               {
-                "symbol": "gpayremit"
+                "symbol": "bodapay"
               },
               {
                 "symbol": "escrow"
@@ -2600,7 +2600,7 @@
           "v0": {
             "topics": [
               {
-                "symbol": "gpayremit"
+                "symbol": "bodapay"
               },
               {
                 "symbol": "escrow"
@@ -2686,7 +2686,7 @@
           "v0": {
             "topics": [
               {
-                "symbol": "gpayremit"
+                "symbol": "bodapay"
               },
               {
                 "symbol": "escrow"

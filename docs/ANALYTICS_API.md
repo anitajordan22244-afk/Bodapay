@@ -28,7 +28,7 @@ Get transaction volume statistics for a specified time period.
 **Example Request:**
 ```bash
 curl -H "Authorization: Bearer TOKEN" \
-  "https://api.gpay-remit.com/api/v1/analytics/volume?period=monthly"
+  "https://api.bodapay.com/api/v1/analytics/volume?period=monthly"
 ```
 
 **Example Response:**
@@ -57,7 +57,7 @@ Get detailed fee collection statistics.
 **Example Request:**
 ```bash
 curl -H "Authorization: Bearer TOKEN" \
-  "https://api.gpay-remit.com/api/v1/analytics/fees?period=weekly"
+  "https://api.bodapay.com/api/v1/analytics/fees?period=weekly"
 ```
 
 **Example Response:**
@@ -89,7 +89,7 @@ Get transaction success and failure statistics.
 **Example Request:**
 ```bash
 curl -H "Authorization: Bearer TOKEN" \
-  "https://api.gpay-remit.com/api/v1/analytics/success-rate?period=daily"
+  "https://api.bodapay.com/api/v1/analytics/success-rate?period=daily"
 ```
 
 **Example Response:**
@@ -122,7 +122,7 @@ Get the most popular currency corridors (source to destination pairs).
 **Example Request:**
 ```bash
 curl -H "Authorization: Bearer TOKEN" \
-  "https://api.gpay-remit.com/api/v1/analytics/top-corridors?limit=5&period=monthly"
+  "https://api.bodapay.com/api/v1/analytics/top-corridors?limit=5&period=monthly"
 ```
 
 **Example Response:**
@@ -212,7 +212,7 @@ Analytics endpoints are subject to the same rate limiting as other API endpoints
 ```javascript
 async function getVolumeData(period) {
   const response = await fetch(
-    `https://api.gpay-remit.com/api/v1/analytics/volume?period=${period}`,
+    `https://api.bodapay.com/api/v1/analytics/volume?period=${period}`,
     {
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -227,7 +227,7 @@ async function getVolumeData(period) {
 ### Custom Date Range Analysis
 ```bash
 curl -H "Authorization: Bearer TOKEN" \
-  "https://api.gpay-remit.com/api/v1/analytics/fees?start_date=2026-01-01&end_date=2026-06-30"
+  "https://api.bodapay.com/api/v1/analytics/fees?start_date=2026-01-01&end_date=2026-06-30"
 ```
 
 ## Support

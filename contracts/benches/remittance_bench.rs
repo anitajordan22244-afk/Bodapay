@@ -1,5 +1,5 @@
 use criterion::{black_box, criterion_group, criterion_main, BatchSize, Criterion};
-use gpay_remit_contracts::remittance_hub::{
+use bodapay_contracts::remittance_hub::{
     Asset, EscrowRequest, RemittanceHubContract, RemittanceHubContractClient,
 };
 use soroban_sdk::{

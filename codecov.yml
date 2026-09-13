@@ -22,21 +22,21 @@ coverage:
 flags:
   backend:
     paths:
-      - backend/
+      - apps/backend/
     carryforward: true
   frontend:
     paths:
-      - frontend/
+      - apps/frontend/
     carryforward: true
 
 ignore:
-  - "backend/migrations/**"
-  - "backend/testdata/**"   # test scaffolding, not shipped code
-  - "backend/chaos/**"      # fault-injection harness, exercised by its own tests
+  - "apps/backend/migrations/**"
+  - "apps/backend/testdata/**"   # test scaffolding, not shipped code
+  - "apps/backend/chaos/**"      # fault-injection harness, exercised by its own tests
   - "**/*_test.go"
   - "**/mock_*.go"
-  - "frontend/build/**"
-  - "sdks/**"
+  - "apps/frontend/build/**"
+  - "packages/**"
   - "contracts/**"          # covered by cargo test, reported separately
 
 comment:

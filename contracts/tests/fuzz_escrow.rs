@@ -1,6 +1,6 @@
 #![cfg(test)]
 
-use gpay_remit_contracts::payment_escrow::{PaymentEscrowContract, PaymentEscrowContractClient, Asset};
+use bodapay_contracts::payment_escrow::{PaymentEscrowContract, PaymentEscrowContractClient, Asset};
 use proptest::prelude::*;
 use soroban_sdk::{testutils::Address as _, Address, Env, String, Symbol};
 

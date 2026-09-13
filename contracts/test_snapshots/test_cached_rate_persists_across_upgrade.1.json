@@ -608,7 +608,7 @@
           "v0": {
             "topics": [
               {
-                "symbol": "gpayremit"
+                "symbol": "bodapay"
               },
               {
                 "symbol": "hub"

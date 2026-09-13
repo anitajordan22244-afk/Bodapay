@@ -1,4 +1,4 @@
-use gpay_remit_contracts::payment_escrow::{
+use bodapay_contracts::payment_escrow::{
     Asset, Error, FeeBreakdown, PaymentEscrowContract, PaymentEscrowContractClient,
 };
 use soroban_sdk::{
@@ -377,7 +377,7 @@ fn test_processing_fee_on_refund() {
     // Wait for expiration
     env.ledger().with_mut(|li| li.timestamp = 2000);
 
-    use gpay_remit_contracts::payment_escrow::RefundReason;
+    use bodapay_contracts::payment_escrow::RefundReason;
     client.refund_escrow(
         &escrow_id,
         &sender,

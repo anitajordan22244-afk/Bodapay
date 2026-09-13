@@ -1,8 +1,8 @@
-# Gpay-Remit Architecture
+# Bodapay Architecture
 
 ## Overview
 
-Gpay-Remit is a three-tier application built on the Stellar blockchain network for cross-border payments and remittances.
+Bodapay is a three-tier application built on the Stellar blockchain network for cross-border payments and remittances.
 
 ## Architecture Layers
 

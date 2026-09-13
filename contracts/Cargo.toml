@@ -1,5 +1,5 @@
 [package]
-name = "gpay-remit-contracts"
+name = "bodapay-contracts"
 version = "0.1.0"
 edition = "2021"
 

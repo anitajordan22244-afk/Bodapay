@@ -1,0 +1,15 @@
+{
+  "name": "@bodapay/sdk",
+  "version": "1.0.0",
+  "description": "Official JavaScript SDK for the Bodapay cross-border payment API",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anitajordan22244-afk/Bodapay",
+    "directory": "packages/sdk-js"
+  },
+  "keywords": ["bodapay", "stellar", "cross-border", "payments", "remittance"],
+  "engines": { "node": ">=18.0.0" }
+}

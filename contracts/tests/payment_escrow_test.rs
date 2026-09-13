@@ -1,4 +1,4 @@
-use gpay_remit_contracts::payment_escrow::{
+use bodapay_contracts::payment_escrow::{
     Asset, DelegationEntry, DelegationPermissions, DisputeReason, Error, EscrowAnalytics,
     EscrowInsurance, EscrowStatus, InsuranceConfig, Milestone, NotificationConfig,
     PaymentEscrowContract, PaymentEscrowContractClient, RecurringConfig, RefundReason,
@@ -270,9 +270,9 @@ fn test_events_emitted() {
         .find(|e| {
             let topics = &e.1;
             if topics.len() > 2 {
-                let gpayremit_sym: soroban_sdk::Val = Symbol::new(&env, "gpayremit").into_val(&env);
+                let bodapay_sym: soroban_sdk::Val = Symbol::new(&env, "bodapay").into_val(&env);
                 let topic0 = topics.get(0).unwrap();
-                if topic0.get_payload() == gpayremit_sym.get_payload() {
+                if topic0.get_payload() == bodapay_sym.get_payload() {
                     let topic2 = topics.get(2).unwrap();
                     let created_sym: soroban_sdk::Val = Symbol::new(&env, "created").into_val(&env);
                     return topic2.get_payload() == created_sym.get_payload();
@@ -303,9 +303,9 @@ fn test_events_emitted() {
         .find(|e| {
             let topics = &e.1;
             if topics.len() > 2 {
-                let gpayremit_sym: soroban_sdk::Val = Symbol::new(&env, "gpayremit").into_val(&env);
+                let bodapay_sym: soroban_sdk::Val = Symbol::new(&env, "bodapay").into_val(&env);
                 let topic0 = topics.get(0).unwrap();
-                if topic0.get_payload() == gpayremit_sym.get_payload() {
+                if topic0.get_payload() == bodapay_sym.get_payload() {
                     let topic2 = topics.get(2).unwrap();
                     let deposit_sym: soroban_sdk::Val = Symbol::new(&env, "deposit").into_val(&env);
                     return topic2.get_payload() == deposit_sym.get_payload();

@@ -14,7 +14,7 @@ fi
 
 # Run Go-based spec validation test
 echo "Running Go OpenAPI syntax and schema verification..."
-cd backend && go test -v -run TestOpenAPISpecValidation .
+cd apps/backend && go test -v -run TestOpenAPISpecValidation .
 
 echo ""
 echo "✅ OpenAPI Specification is valid and passed all validation checks!"

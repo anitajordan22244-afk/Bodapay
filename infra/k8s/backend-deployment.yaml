@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bodapay-backend
+  labels:
+    app: bodapay-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bodapay-backend
+  template:
+    metadata:
+      labels:
+        app: bodapay-backend
+    spec:
+      containers:
+        - name: backend
+          image: bodapay-backend:latest
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: bodapay-secrets
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bodapay-backend
+spec:
+  selector:
+    app: bodapay-backend
+  ports:
+    - port: 8080
+      targetPort: 8080

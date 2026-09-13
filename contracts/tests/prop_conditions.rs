@@ -1,6 +1,6 @@
 #![cfg(all(test, feature = "prop"))]
 
-use gpay_remit_contracts::payment_escrow::{
+use bodapay_contracts::payment_escrow::{
     Asset, ConditionOperator, ConditionType, PaymentEscrowContract, PaymentEscrowContractClient,
 };
 use proptest::prelude::*;

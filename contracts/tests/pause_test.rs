@@ -3,7 +3,7 @@
 // The contract uses upgradeable::is_paused() to check if operations should be blocked.
 // These tests verify that pause checks are in place for critical operations.
 
-use gpay_remit_contracts::payment_escrow::{
+use bodapay_contracts::payment_escrow::{
     Asset, Error, PaymentEscrowContract, PaymentEscrowContractClient, RefundReason,
 };
 use soroban_sdk::{testutils::Address as _, token, Address, Env, String};
