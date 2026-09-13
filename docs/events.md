@@ -6,11 +6,11 @@ This project uses **Soroban events** to make contract state changes observable o
 
 All contract events emitted by `PaymentEscrowContract` and `RemittanceHubContract` use a consistent:
 
-- **Topics**: `(gpayremit, <component>, <action>, <id>)`
+- **Topics**: `(bodapay, <component>, <action>, <id>)`
   - `<component>` is one of: `escrow`, `hub`
   - `<action>` is a short symbol describing the change (e.g. `created`, `deposit`, `inv_paid`)
   - `<id>` is the primary identifier for indexing (e.g. `escrow_id`, `invoice_id`), or `0` when not applicable
-- **Data**: `GpayEvent` (see `contracts/src/events.rs`)
+- **Data**: `BodapayEvent` (see `contracts/src/events.rs`)
   - `timestamp`: ledger timestamp
   - `actor`: the address that initiated the change (or the contract address for automated actions)
   - `amount`: amount associated with the event (or `0` when not applicable)

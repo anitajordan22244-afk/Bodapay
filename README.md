@@ -1,12 +1,10 @@
-# Gpay-Remit
+# Bodapay
 
 A cross-border payment and remittance hub built on the Stellar network, enabling instant, low-cost international money transfers with multi-currency support.
 
-i just need to create a drrsft pr
-
 ## Overview
 
-Gpay-Remit leverages Stellar's payment rails to provide:
+Bodapay leverages Stellar's payment rails to provide:
 
 - **Instant Remittances**: Near-instant cross-border transfers
 - **Multi-Currency Support**: Automatic currency conversions via Stellar DEX
@@ -21,17 +19,24 @@ Gpay-Remit leverages Stellar's payment rails to provide:
 - **Backend**: Go 1.21+ with Gin framework, Stellar Go SDK
 - **Database**: PostgreSQL with GORM ORM
 - **Frontend**: React.js with Stellar SDK
-- **Deployment**: Docker & Docker Compose
+- **Deployment**: Docker & Docker Compose, Kubernetes
 
 ## Project Structure
 
 ```
-Gpay-Remit/
-├── contracts/          # Soroban smart contracts (Rust)
-├── backend/           # Go API server
-├── frontend/          # React.js web interface
-├── docs/              # Architecture documentation
-└── scripts/           # Setup and deployment scripts
+Bodapay/
+├── apps/
+│   ├── backend/         # Go API server
+│   └── frontend/        # React.js web interface
+├── contracts/           # Soroban smart contracts (Rust)
+├── packages/
+│   └── sdk-js/          # Official JavaScript SDK (@bodapay/sdk)
+├── infra/
+│   ├── k8s/             # Kubernetes manifests
+│   ├── monitoring/      # Uptime/alerting-as-code
+│   └── docker-compose.yml
+├── docs/                # Architecture documentation
+└── scripts/             # Setup and deployment scripts
 ```
 
 ## Quick Start
@@ -49,15 +54,15 @@ Gpay-Remit/
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/Gpay-Remit.git
-cd Gpay-Remit
+git clone https://github.com/anitajordan22244-afk/Bodapay.git
+cd Bodapay
 
 # Run setup script
 chmod +x scripts/setup.sh
 ./scripts/setup.sh
 
 # Start local development environment
-docker-compose up -d
+docker compose -f infra/docker-compose.yml up -d
 
 # Deploy contracts to Stellar Testnet
 chmod +x scripts/deploy_contracts.sh
@@ -69,7 +74,7 @@ chmod +x scripts/deploy_contracts.sh
 **Backend:**
 
 ```bash
-cd backend
+cd apps/backend
 go run main.go
 # Server runs on http://localhost:8080
 ```
@@ -77,7 +82,7 @@ go run main.go
 **Frontend:**
 
 ```bash
-cd frontend
+cd apps/frontend
 npm start
 # UI runs on http://localhost:3000
 ```
@@ -103,20 +108,20 @@ cargo test
 **Backend:**
 
 ```bash
-cd backend
+cd apps/backend
 go test ./...
 ```
 
 **Frontend:**
 
 ```bash
-cd frontend
+cd apps/frontend
 npm test
 ```
 
 ## Deployment
 
-See [docs/deployment.md](docs/deployment.md) for production deployment guide.
+See [infra/k8s](infra/k8s/) for Kubernetes deployment manifests and [infra/docker-compose.yml](infra/docker-compose.yml) for local orchestration.
 
 ## Security
 
@@ -124,10 +129,6 @@ See [docs/deployment.md](docs/deployment.md) for production deployment guide.
 - Implement KYC/AML checks before large transfers
 - Use multi-signature for high-value escrows
 - Regular security audits recommended
-
-## Contributing
-
-Contributions welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## License
 
@@ -138,4 +139,3 @@ MIT License - see [LICENSE](LICENSE) file for details.
 - [Stellar Documentation](https://developers.stellar.org/)
 - [Soroban Documentation](https://soroban.stellar.org/)
 - [Stellar Go SDK](https://github.com/stellar/go)
-±

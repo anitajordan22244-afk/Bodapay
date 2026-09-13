@@ -2,10 +2,10 @@
 //! Covers: data migration, backward compatibility, versioning, pause, auth, and paused-state enforcement.
 //! Uses RemittanceHubContract which wires `upgradeable` helpers.
 
-use gpay_remit_contracts::remittance_hub::{
+use bodapay_contracts::remittance_hub::{
     Asset, InvoiceStatus, MetricType, RemittanceHubContract, RemittanceHubContractClient,
 };
-use gpay_remit_contracts::upgradeable::{self, UpgradeError};
+use bodapay_contracts::upgradeable::{self, UpgradeError};
 use soroban_sdk::{
     symbol_short,
     testutils::{Address as _, Ledger},
@@ -431,7 +431,7 @@ fn test_invoice_lifecycle_persists_and_mutable_after_upgrade() {
 
 #[test]
 fn test_escrow_batch_data_persists_across_upgrade() {
-    use gpay_remit_contracts::remittance_hub::EscrowRequest;
+    use bodapay_contracts::remittance_hub::EscrowRequest;
     let env = Env::default();
     let (client, admin, user1, user2) = setup_hub(&env);
     env.ledger().with_mut(|li| li.timestamp = 1000);

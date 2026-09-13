@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # =============================================================================
-# Gpay-Remit — Monitoring-as-Code Setup Script
+# Bodapay — Monitoring-as-Code Setup Script
 # Issue #280: External Uptime Monitoring
 #
 # Creates/updates all UptimeRobot monitors and alert contacts defined in
-# monitoring/uptimerobot.yml using the UptimeRobot API v2.
+# infra/monitoring/uptimerobot.yml using the UptimeRobot API v2.
 #
 # Usage:
 #   export UPTIMEROBOT_API_KEY="your-api-key"
@@ -45,7 +45,7 @@ fi
 
 API_KEY="${UPTIMEROBOT_API_KEY}"
 BASE_URL="https://api.uptimerobot.com/v2"
-PRODUCTION_HOST="https://gpay-remit.example.com"
+PRODUCTION_HOST="https://bodapay.example.com"
 DRY_RUN="${DRY_RUN:-false}"
 
 # ── API helper ────────────────────────────────────────────────────────────────
@@ -184,7 +184,7 @@ create_monitor() {
 main() {
     echo ""
     info "====================================================================="
-    info " Gpay-Remit — UptimeRobot Monitoring Setup"
+    info " Bodapay — UptimeRobot Monitoring Setup"
     info "====================================================================="
     echo ""
 
@@ -207,24 +207,24 @@ main() {
     info "Creating monitors..."
 
     # Health endpoints
-    create_monitor "[Gpay-Remit] Health Check"      "${PRODUCTION_HOST}/health"                   "${contact_str}"
-    create_monitor "[Gpay-Remit] Readiness Probe"   "${PRODUCTION_HOST}/health/ready"             "${contact_str}"
-    create_monitor "[Gpay-Remit] Liveness Probe"    "${PRODUCTION_HOST}/health/live"              "${contact_str}"
+    create_monitor "[Bodapay] Health Check"      "${PRODUCTION_HOST}/health"                   "${contact_str}"
+    create_monitor "[Bodapay] Readiness Probe"   "${PRODUCTION_HOST}/health/ready"             "${contact_str}"
+    create_monitor "[Bodapay] Liveness Probe"    "${PRODUCTION_HOST}/health/live"              "${contact_str}"
 
     # Authentication (POST — expects 400 when called without a body)
-    create_monitor "[Gpay-Remit] Auth Login Endpoint" "${PRODUCTION_HOST}/api/v1/auth/login"      "${contact_str}" POST 400
+    create_monitor "[Bodapay] Auth Login Endpoint" "${PRODUCTION_HOST}/api/v1/auth/login"      "${contact_str}" POST 400
 
     # Core API (protected — expects 401)
-    create_monitor "[Gpay-Remit] Remittances API"   "${PRODUCTION_HOST}/api/v1/remittances"       "${contact_str}" GET 401
-    create_monitor "[Gpay-Remit] Fee Calculator API" "${PRODUCTION_HOST}/api/v1/fees/calculate"   "${contact_str}" GET 401
-    create_monitor "[Gpay-Remit] Exchange Rates API" "${PRODUCTION_HOST}/api/v1/exchange-rates"   "${contact_str}" GET 401
+    create_monitor "[Bodapay] Remittances API"   "${PRODUCTION_HOST}/api/v1/remittances"       "${contact_str}" GET 401
+    create_monitor "[Bodapay] Fee Calculator API" "${PRODUCTION_HOST}/api/v1/fees/calculate"   "${contact_str}" GET 401
+    create_monitor "[Bodapay] Exchange Rates API" "${PRODUCTION_HOST}/api/v1/exchange-rates"   "${contact_str}" GET 401
 
     # Documentation
-    create_monitor "[Gpay-Remit] API Documentation" "${PRODUCTION_HOST}/api/docs"                 "${contact_str}"
-    create_monitor "[Gpay-Remit] OpenAPI Spec"       "${PRODUCTION_HOST}/api/docs/openapi.yaml"   "${contact_str}"
+    create_monitor "[Bodapay] API Documentation" "${PRODUCTION_HOST}/api/docs"                 "${contact_str}"
+    create_monitor "[Bodapay] OpenAPI Spec"       "${PRODUCTION_HOST}/api/docs/openapi.yaml"   "${contact_str}"
 
     # Frontend
-    create_monitor "[Gpay-Remit] Frontend"           "${PRODUCTION_HOST}/"                         "${contact_str}"
+    create_monitor "[Bodapay] Frontend"           "${PRODUCTION_HOST}/"                         "${contact_str}"
 
     echo ""
     success "====================================================================="

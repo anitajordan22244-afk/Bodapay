@@ -42,12 +42,12 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v4
         with:
-          # Must satisfy the `go 1.25.0` directive in backend/go.mod; 1.24
+          # Must satisfy the `go 1.25.0` directive in apps/backend/go.mod; 1.24
           # cannot build the module at all.
           go-version: "1.25"
 
       - name: Run backend tests with coverage
-        working-directory: ./backend
+        working-directory: ./apps/backend
         env:
           REDIS_ADDR: localhost:6379
         run: |
@@ -59,7 +59,7 @@ jobs:
           go test -race -covermode=atomic -coverprofile=coverage.out ./...
 
       - name: Report coverage summary
-        working-directory: ./backend
+        working-directory: ./apps/backend
         run: |
           go tool cover -func=coverage.out | tail -n 1
           echo "### Backend coverage" >> "$GITHUB_STEP_SUMMARY"
@@ -70,7 +70,7 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
-          files: ./backend/coverage.out
+          files: ./apps/backend/coverage.out
           flags: backend
           name: backend-coverage
           # The repository is public, so uploads work without a token. Set
@@ -86,7 +86,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: backend-coverage
-          path: backend/coverage.out
+          path: apps/backend/coverage.out
           retention-days: 14
 
   test-frontend:
@@ -101,21 +101,21 @@ jobs:
           node-version: "18"
 
       - name: Install dependencies
-        working-directory: ./frontend
+        working-directory: ./apps/frontend
         run: npm install
 
       - name: Build frontend
-        working-directory: ./frontend
+        working-directory: ./apps/frontend
         run: npm run build
 
       - name: Run frontend tests with coverage
-        working-directory: ./frontend
+        working-directory: ./apps/frontend
         run: npm test -- --watchAll=false --coverage
 
       - name: Upload frontend coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
-          directory: ./frontend/coverage
+          directory: ./apps/frontend/coverage
           flags: frontend
           name: frontend-coverage
           token: ${{ secrets.CODECOV_TOKEN }}

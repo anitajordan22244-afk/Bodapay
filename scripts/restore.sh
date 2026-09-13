@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Restores the gpay_remit Postgres database from an S3 backup produced by
+# Restores the bodapay Postgres database from an S3 backup produced by
 # backup.sh. DESTRUCTIVE: overwrites the target database's contents.
 #
-# Usage: ./restore.sh s3://gpay-remit-backups/gpay_remit_20260101T000000Z.sql.gz
+# Usage: ./restore.sh s3://bodapay-backups/bodapay_20260101T000000Z.sql.gz
 #
 # Required env vars:
 #   DATABASE_URL - Postgres connection string to restore into

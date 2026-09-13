@@ -6,7 +6,7 @@ Accepted
 
 ## Context
 
-Gpay-Remit needs a trustless escrow mechanism for cross-border payments. We need to decide on the blockchain platform and smart contract language for implementing the payment logic.
+Bodapay needs a trustless escrow mechanism for cross-border payments. We need to decide on the blockchain platform and smart contract language for implementing the payment logic.
 
 Key requirements:
 - Low transaction fees for micro-payments

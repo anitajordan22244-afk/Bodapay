@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Dumps the gpay_remit Postgres database and uploads it to S3.
+# Dumps the bodapay Postgres database and uploads it to S3.
 # Intended to run on a daily schedule (cron / k8s CronJob).
 #
 # Required env vars:
 #   DATABASE_URL      - Postgres connection string
-#   BACKUP_S3_BUCKET  - target S3 bucket, e.g. s3://gpay-remit-backups
+#   BACKUP_S3_BUCKET  - target S3 bucket, e.g. s3://bodapay-backups
 # Requires: pg_dump, aws CLI (or an S3-compatible equivalent) on PATH.
 set -euo pipefail
 
@@ -12,7 +12,7 @@ set -euo pipefail
 : "${BACKUP_S3_BUCKET:?BACKUP_S3_BUCKET is required}"
 
 TIMESTAMP="$(date -u +%Y%m%dT%H%M%SZ)"
-FILENAME="gpay_remit_${TIMESTAMP}.sql.gz"
+FILENAME="bodapay_${TIMESTAMP}.sql.gz"
 TMP_PATH="/tmp/${FILENAME}"
 
 echo "Dumping database to ${TMP_PATH}..."

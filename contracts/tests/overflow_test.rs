@@ -1,4 +1,4 @@
-use gpay_remit_contracts::payment_escrow::{
+use bodapay_contracts::payment_escrow::{
     Asset, Error, EscrowStatus, PaymentEscrowContract, PaymentEscrowContractClient, RefundReason,
 };
 use soroban_sdk::{

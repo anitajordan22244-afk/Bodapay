@@ -1,7 +1,7 @@
 {
   "info": {
-    "name": "Gpay-Remit API v2",
-    "description": "Complete API collection for the Gpay-Remit cross-border payment platform.",
+    "name": "Bodapay API v2",
+    "description": "Complete API collection for the Bodapay cross-border payment platform.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "auth": {

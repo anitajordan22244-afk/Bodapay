@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bodapay-frontend
+  labels:
+    app: bodapay-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bodapay-frontend
+  template:
+    metadata:
+      labels:
+        app: bodapay-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: bodapay-frontend:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bodapay-frontend
+spec:
+  selector:
+    app: bodapay-frontend
+  ports:
+    - port: 80
+      targetPort: 80

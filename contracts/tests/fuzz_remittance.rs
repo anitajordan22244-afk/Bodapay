@@ -1,6 +1,6 @@
 #![cfg(test)]
 
-use gpay_remit_contracts::remittance_hub::{RemittanceHubContract, RemittanceHubContractClient, Asset};
+use bodapay_contracts::remittance_hub::{RemittanceHubContract, RemittanceHubContractClient, Asset};
 use proptest::prelude::*;
 use soroban_sdk::{testutils::Address as _, Address, Env, String, Symbol};
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Gpay-Remit API supports versioning to ensure backward compatibility when introducing breaking changes. This document explains how to use API versions and migrate between them.
+The Bodapay API supports versioning to ensure backward compatibility when introducing breaking changes. This document explains how to use API versions and migrate between them.
 
 ## Supported Versions
 
@@ -109,13 +109,13 @@ Some endpoints may only be available in specific versions. If you request an end
 **Before (v1):**
 ```bash
 curl -H "Authorization: Bearer TOKEN" \
-  https://api.gpay-remit.com/api/v1/remittances
+  https://api.bodapay.com/api/v1/remittances
 ```
 
 **After (v2):**
 ```bash
 curl -H "Authorization: Bearer TOKEN" \
-  https://api.gpay-remit.com/api/v2/remittances
+  https://api.bodapay.com/api/v2/remittances
 ```
 
 ## Timeline

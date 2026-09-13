@@ -1,6 +1,6 @@
 use soroban_sdk::{contracttype, symbol_short, Address, Env};
 
-/// Rate limiting module for Gpay-Remit contracts.
+/// Rate limiting module for Bodapay contracts.
 ///
 /// Provides per-user and global rate limiting using ledger timestamps
 /// with sliding window tracking. Admin-configurable limits and

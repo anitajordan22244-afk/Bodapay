@@ -1,6 +1,6 @@
 #![cfg(test)]
 
-use gpay_remit_contracts::payment_escrow::{
+use bodapay_contracts::payment_escrow::{
     FeeBreakdown, PaymentEscrowContract, PaymentEscrowContractClient,
 };
 use proptest::prelude::*;

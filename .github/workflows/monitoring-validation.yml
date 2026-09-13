@@ -4,13 +4,13 @@ on:
   push:
     branches: [main, develop, "infra/*"]
     paths:
-      - "monitoring/**"
+      - "infra/monitoring/**"
       - "scripts/setup_monitoring.sh"
       - ".github/workflows/monitoring-validation.yml"
   pull_request:
     branches: [main, develop]
     paths:
-      - "monitoring/**"
+      - "infra/monitoring/**"
       - "scripts/setup_monitoring.sh"
       - ".github/workflows/monitoring-validation.yml"
 
@@ -27,12 +27,12 @@ jobs:
       - name: Lint uptimerobot.yml
         run: |
           yamllint -d '{extends: default, rules: {line-length: {max: 120}}}' \
-            monitoring/uptimerobot.yml
+            infra/monitoring/uptimerobot.yml
 
       - name: Lint alerting.yml
         run: |
           yamllint -d '{extends: default, rules: {line-length: {max: 120}}}' \
-            monitoring/alerting.yml
+            infra/monitoring/alerting.yml
 
   validate-content:
     name: Validate Monitor Content
@@ -50,7 +50,7 @@ jobs:
       - name: Check all monitors have 5-minute intervals
         run: |
           echo "Checking monitor intervals..."
-          WRONG=$(yq '.monitors[] | select(.interval != 300) | .friendly_name' monitoring/uptimerobot.yml)
+          WRONG=$(yq '.monitors[] | select(.interval != 300) | .friendly_name' infra/monitoring/uptimerobot.yml)
           if [[ -n "${WRONG}" ]]; then
             echo "ERROR: The following monitors do not use a 5-minute (300s) interval:"
             echo "${WRONG}"
@@ -61,7 +61,7 @@ jobs:
       - name: Check all monitors have alert contacts
         run: |
           echo "Checking alert contacts..."
-          MISSING=$(yq '.monitors[] | select((.alert_contacts | length) == 0) | .friendly_name' monitoring/uptimerobot.yml)
+          MISSING=$(yq '.monitors[] | select((.alert_contacts | length) == 0) | .friendly_name' infra/monitoring/uptimerobot.yml)
           if [[ -n "${MISSING}" ]]; then
             echo "ERROR: The following monitors have no alert contacts:"
             echo "${MISSING}"
@@ -81,7 +81,7 @@ jobs:
             "/api/v1/fees/calculate"
             "/api/v1/exchange-rates"
           )
-          ALL_URLS=$(yq '.monitors[].url' monitoring/uptimerobot.yml)
+          ALL_URLS=$(yq '.monitors[].url' infra/monitoring/uptimerobot.yml)
           FAILED=0
           for endpoint in "${REQUIRED[@]}"; do
             if ! echo "${ALL_URLS}" | grep -q "${endpoint}"; then
@@ -96,9 +96,9 @@ jobs:
 
       - name: Verify production host is set correctly
         run: |
-          HOST=$(yq '.settings.production_host' monitoring/uptimerobot.yml)
+          HOST=$(yq '.settings.production_host' infra/monitoring/uptimerobot.yml)
           echo "Production host: ${HOST}"
-          if [[ "${HOST}" != "https://gpay-remit.example.com" ]]; then
+          if [[ "${HOST}" != "https://bodapay.example.com" ]]; then
             echo "ERROR: Unexpected production host: ${HOST}"
             exit 1
           fi

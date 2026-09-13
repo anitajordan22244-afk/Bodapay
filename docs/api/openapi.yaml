@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: Gpay-Remit API
+  title: Bodapay API
   description: |
-    REST API for the Gpay-Remit cross-border payment platform built on Stellar.
+    REST API for the Bodapay cross-border payment platform built on Stellar.
 
     ## Authentication
     All protected endpoints require a Bearer JWT token in the `Authorization` header.
@@ -16,7 +16,7 @@ info:
     Set the desired version via the `Accept-Version` header or use the versioned path prefix (`/api/v1/` or `/api/v2/`).
   version: "2.0.0"
   contact:
-    name: Gpay-Remit Team
+    name: Bodapay Team
 
 servers:
   - url: http://localhost:8080/api/v1
@@ -375,7 +375,7 @@ components:
           example: healthy
         service:
           type: string
-          example: gpay-remit-api
+          example: bodapay-api
         timestamp:
           type: string
           format: date-time

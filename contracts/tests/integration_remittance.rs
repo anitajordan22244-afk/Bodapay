@@ -7,7 +7,7 @@
 /// Run with: cargo test --features integration
 #[cfg(feature = "integration")]
 mod integration_remittance {
-    use gpay_remit_contracts::payment_escrow::{
+    use bodapay_contracts::payment_escrow::{
         Asset, Error, EscrowStatus, PaymentEscrowContract, PaymentEscrowContractClient,
     };
     use soroban_sdk::{
@@ -130,7 +130,7 @@ mod integration_remittance {
             &escrow_id,
             &sender,
             &token.address,
-            &gpay_remit_contracts::payment_escrow::RefundReason::Expiration,
+            &bodapay_contracts::payment_escrow::RefundReason::Expiration,
         );
 
         let post = client.get_escrow(&escrow_id).unwrap();
@@ -270,7 +270,7 @@ mod integration_remittance {
             &escrow_id,
             &sender,
             &token.address,
-            &gpay_remit_contracts::payment_escrow::RefundReason::Expiration,
+            &bodapay_contracts::payment_escrow::RefundReason::Expiration,
         );
         assert_eq!(result, Err(Ok(Error::NotExpired)));
     }
