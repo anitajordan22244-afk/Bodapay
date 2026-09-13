@@ -1809,6 +1809,51 @@
       "event": {
         "ext": "v0",
         "contract_id": "0000000000000000000000000000000000000000000000000000000000000001",
+        "type_": "contract",
+        "body": {
+          "v0": {
+            "topics": [
+              {
+                "symbol": "bodapay"
+              },
+              {
+                "symbol": "escrow"
+              },
+              {
+                "symbol": "asset_add"
+              },
+              {
+                "u64": 0
+              }
+            ],
+            "data": {
+              "vec": [
+                {
+                  "u64": 0
+                },
+                {
+                  "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4"
+                },
+                {
+                  "i128": {
+                    "hi": 0,
+                    "lo": 0
+                  }
+                },
+                {
+                  "symbol": "na"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "failed_call": false
+    },
+    {
+      "event": {
+        "ext": "v0",
+        "contract_id": "0000000000000000000000000000000000000000000000000000000000000001",
         "type_": "diagnostic",
         "body": {
           "v0": {
@@ -2301,6 +2346,12 @@
           "v0": {
             "topics": [
               {
+                "symbol": "bodapay"
+              },
+              {
+                "symbol": "escrow"
+              },
+              {
                 "symbol": "disp_rais"
               },
               {
@@ -2310,14 +2361,19 @@
             "data": {
               "vec": [
                 {
+                  "u64": 0
+                },
+                {
                   "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHK3M"
                 },
                 {
-                  "vec": [
-                    {
-                      "symbol": "NonDelivery"
-                    }
-                  ]
+                  "i128": {
+                    "hi": 0,
+                    "lo": 0
+                  }
+                },
+                {
+                  "symbol": "open"
                 }
               ]
             }

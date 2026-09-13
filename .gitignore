@@ -2,7 +2,13 @@
 target/
 **/*.rs.bk
 *.pdb
+# contracts/Cargo.lock IS committed on purpose: soroban-env-host declares an
+# unbounded `ed25519-dalek = ">=2.0.0"` requirement, so an uncommitted lock
+# lets cargo resolve a newer, incompatible major version and break the build
+# (see contracts/Cargo.toml for the pin). Ignore any other Cargo.lock, e.g.
+# under packages/, where a lockfile isn't meant to be committed.
 Cargo.lock
+!/contracts/Cargo.lock
 
 # Go
 *.exe
@@ -23,6 +29,7 @@ yarn-error.log*
 .pnpm-debug.log*
 dist/
 build/
+coverage/
 .env.local
 .env.development.local
 .env.test.local
@@ -52,6 +59,10 @@ logs/
 
 # Docker
 .docker/
+docker-compose.override.yml
+
+# Kubernetes — real secrets, as opposed to the committed *.example.yaml
+infra/k8s/secrets.yaml
 
 # Build artifacts
 *.wasm

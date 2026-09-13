@@ -6287,7 +6287,7 @@ mod test {
 
         let expected_platform = 1000 * 250 / 10000;
         let expected_forex = 1000 * 100 / 10000;
-        let expected_compliance = 10;
+        let expected_compliance = 1000 * 10 / 10000;
         let expected_total = expected_platform + expected_forex + expected_compliance;
 
         assert_eq!(breakdown.platform_fee, expected_platform);

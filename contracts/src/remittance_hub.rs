@@ -2802,7 +2802,8 @@ mod test {
         let contract_id = env.register_contract(None, RemittanceHubContract);
         let client = RemittanceHubContractClient::new(&env, &contract_id);
         let admin = Address::generate(&env);
-        client.init_hub(&admin);
+        let oracle = Address::generate(&env);
+        client.init_hub(&admin, &oracle, &oracle, &3600);
 
         let config = FeeConfig {
             percentage: 300,
