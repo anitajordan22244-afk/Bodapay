@@ -4627,24 +4627,6 @@ impl PaymentEscrowContract {
             .unwrap_or(Vec::new(&env))
     }
 
-    fn check_delegated_permission(
-        env: &Env,
-        escrow_id: u64,
-        caller: &Address,
-        permission_check: fn(&DelegationPermissions) -> bool,
-    ) -> Result<bool, Error> {
-        let delegation_key = DataKey::EscrowDelegation(escrow_id, caller.clone());
-        if let Some(entry) = env
-            .storage()
-            .instance()
-            .get::<_, DelegationEntry>(&delegation_key)
-        {
-            Ok(permission_check(&entry.permissions))
-        } else {
-            Ok(false)
-        }
-    }
-
     // ── Insurance Functions (#131) ─────────────────────────────────────
 
     pub fn set_insurance_config(
@@ -4684,7 +4666,7 @@ impl PaymentEscrowContract {
     pub fn insure_escrow(env: Env, escrow_id: u64, caller: Address) -> Result<(), Error> {
         caller.require_auth();
 
-        let mut escrow: Escrow = env
+        let escrow: Escrow = env
             .storage()
             .instance()
             .get(&DataKey::Escrow(escrow_id))
